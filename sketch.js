@@ -4,7 +4,7 @@ var foodX,foodY;
 function setup() {
   createCanvas(400,400);
   snake = new Snake();
-  foodLocation();
+  foodLoc();
   frameRate(3);
 }
 
@@ -12,17 +12,16 @@ function draw() {
   background(0);  
 
   snake.update();
-  // new location is generated when the snake eats the food
   if(snake.eat(foodX,foodY)){
-    foodLocation();   //Getting location of Food
+    foodLoc();
   }
   snake.display();
   fill("red");
-  rect(foodX,foodY,20,20);  //Create Food along with location and size
-  snake.gameOver();   //Keep checking if Game is Over
+  rect(foodX,foodY,20,20);
+  snake.gameOver();
 }
 
-function keyPressed(){      //Code to control snake's direction
+function keyPressed(){
   if(keyCode === LEFT_ARROW){
     snake.xdir = -20;
     snake.ydir = 0;
@@ -41,7 +40,7 @@ function keyPressed(){      //Code to control snake's direction
   }
 }
 
-function foodLocation (){       // Getting random location for Food
-  foodX = floor(random(0,20))*20; //Ensuring the food falls in grids of 20 units
+function foodLoc (){
+  foodX = floor(random(0,20))*20;
   foodY = floor(random(0,20))*20;
 }
